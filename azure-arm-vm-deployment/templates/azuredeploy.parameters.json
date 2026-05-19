@@ -1,0 +1,104 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "southafricanorth"
+        },
+        "networkInterfaceName1": {
+            "value": "3mtt-azure-vm863_z1"
+        },
+        "networkSecurityGroupName": {
+            "value": "3mtt-azure-vm-nsg"
+        },
+        "networkSecurityGroupRules": {
+            "value": [
+                {
+                    "name": "SSH",
+                    "properties": {
+                        "priority": 300,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "22"
+                    }
+                }
+            ]
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "virtualNetworkName": {
+            "value": "3mtt-azure-vm-vnet"
+        },
+        "addressPrefixes": {
+            "value": [
+                "10.0.0.0/16"
+            ]
+        },
+        "subnets": {
+            "value": [
+                {
+                    "name": "default",
+                    "properties": {
+                        "addressPrefix": "10.0.0.0/24"
+                    }
+                }
+            ]
+        },
+        "publicIpAddressName1": {
+            "value": "3mtt-azure-vm-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Static"
+        },
+        "publicIpAddressSku": {
+            "value": "Standard"
+        },
+        "pipDeleteOption": {
+            "value": "Detach"
+        },
+        "virtualMachineName": {
+            "value": "3mtt-azure-vm"
+        },
+        "virtualMachineName1": {
+            "value": "3mtt-azure-vm"
+        },
+        "virtualMachineComputerName1": {
+            "value": "3mtt-azure-vm"
+        },
+        "virtualMachineRG": {
+            "value": "3mtt-azure-lab"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "osDiskDeleteOption": {
+            "value": "Delete"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_B2s"
+        },
+        "nicDeleteOption": {
+            "value": "Detach"
+        },
+        "hibernationEnabled": {
+            "value": false
+        },
+        "adminUsername": {
+            "value": "effiongsamuel-3mtt-dario-lab"
+        },
+        "adminPublicKey": {
+            "value": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJfKzQ3zGJHLgmMi+ljMiJa7sKl+5NwU+bwRc48RgsWY samuel.m1804892@st.futminna.edu.ng"
+        },
+        "enablePeriodicAssessment": {
+            "value": "ImageDefault"
+        },
+        "virtualMachine1Zone": {
+            "value": "1"
+        }
+    }
+}
