@@ -146,7 +146,7 @@ Notes:
 - Data transfer (egress): Internet egress is charged per GB and adds up quickly at TB scale.
 - Managed database: RDS Multi-AZ instance hours and storage are constant monthly costs.
 - Compute scale: EC2 autoscaling during peaks increases cost; choose instance family carefully.
-- Load balancing & LCUs: ALB charges include hourly and usage-based LCU costs — heavy short-lived connections increase cost.
+- Load balancing & LCUs: ALB charges include hourly and usage-based LCU costs  heavy short-lived connections increase cost.
 - Storage requests/tiers: S3 requests are cheap, but lifecycle to Infrequent Access or Glacier can reduce storage cost.
 
 ## AWS cost optimization recommendations
@@ -217,7 +217,7 @@ This document guides using the Azure Pricing Calculator and provides example mon
 2. Windows VM scenario (with Azure Hybrid Benefit)
    - VM size: `Standard_D2s_v3` equivalent (2 vCPU, 8 GB RAM)
    - Quantity: baseline 2 instances, average 3
-   - OS: Windows Server — apply Azure Hybrid Benefit to reuse existing Windows Server licenses with Software Assurance or eligible subscriptions to reduce OS cost
+   - OS: Windows Server  apply Azure Hybrid Benefit to reuse existing Windows Server licenses with Software Assurance or eligible subscriptions to reduce OS cost
    - Managed disk: Premium SSD P10 (128 GB)
 
 ---
@@ -307,38 +307,6 @@ Disadvantages:
 - Use Reserved VM Instances (1 or 3 year) or Azure Savings Plans for compute-heavy predictable workloads.
 - Use lifecycle management for Blob Storage: move to Cool/Archive for older objects.
 
-## Screenshots to capture
-
-- VM configuration for Linux scenario in the Azure Pricing Calculator
-- VM configuration for Windows scenario with Azure Hybrid Benefit toggled
-- Blob Storage configuration (500 GB Hot)
-- Load Balancer / Application Gateway configuration
-- Backup (Recovery Services vault) configuration
-- Final combined estimate summary
-
----
-
-## Markdown-ready summary (for README)
-
-```
-Phase 3 Azure Cost Estimation Summary
-
-- Region: East US
-- Linux scenario monthly example: $~532
-- Windows scenario with Azure Hybrid Benefit monthly example: $~482
-- Major drivers: VM compute, data egress, backup retention
-- Optimization: Azure Hybrid Benefit, B-series VMs, Azure CDN, Reserved Instances
-
-Notes: These are example estimates. Use the Azure Pricing Calculator with exact VM SKUs and backup retention details for an authoritative quote.
-```
-
----
-
-Next steps:
-
-- I can produce a CSV export of both AWS and Azure estimates and a side-by-side cost table for the repository. Confirm and I'll generate them.
-\n\n# PHASE4_NETWORKING.md\n
-
 # Phase 4 Networking Cost Analysis
 
 This document compares networking costs for AWS and Azure for the Phase 1 application and explains multi-zone, outbound, and load-balancer transfer impacts.
@@ -384,7 +352,7 @@ Cost formula (simplified):
 
 - Pros: higher availability and resilience; traffic localized within zone reduces cross-AZ egress if clients are zonal-aware.
 - Cons: increased inter-zone replication/sync costs for stateful services (DB replication, shared caches), possible cross-zone load balancing charges.
-- Recommendation: Minimize cross-AZ chatter — use regional services (managed DB Multi-AZ is optimized) and prefer async replication where possible.
+- Recommendation: Minimize cross-AZ chatter  use regional services (managed DB Multi-AZ is optimized) and prefer async replication where possible.
 
 ## Hidden networking costs to watch for
 
@@ -395,9 +363,9 @@ Cost formula (simplified):
 
 ## Scalability impact and real-world examples
 
-- Example 1 — Read-replica sync: a reporting replica replicates 500 GB/month from primary. If cross-AZ at $0.02/GB = $10/month — small.
-- Example 2 — Backup and restore: Restoring a 200 GB snapshot across regions will incur regional transfer fees; plan backup retention and location to optimize.
-- Example 3 — CDN impact: Offloading 1.5 TB of static assets to CDN reduces origin egress by 75% — direct egress cost savings significant.
+- Example 1  Read-replica sync: a reporting replica replicates 500 GB/month from primary. If cross-AZ at $0.02/GB = $10/month  small.
+- Example 2  Backup and restore: Restoring a 200 GB snapshot across regions will incur regional transfer fees; plan backup retention and location to optimize.
+- Example 3  CDN impact: Offloading 1.5 TB of static assets to CDN reduces origin egress by 75%  direct egress cost savings significant.
 
 ## Networking comparison table (summary)
 
@@ -439,7 +407,7 @@ Example cost calculations:
 Notes:
 
 - These are illustrative; actual tier boundaries and rates vary by region and over time. Use provider price pages or calculators for exact quotes.
-- For our baseline app (2 TB egress), egress is a dominant cost — consider CDN to reduce origin egress.
+- For our baseline app (2 TB egress), egress is a dominant cost  consider CDN to reduce origin egress.
 
 ## Per-GB tiered comparison (quick guidance)
 
@@ -480,7 +448,7 @@ Cons:
 ## Azure: Reserved Instances, Savings Plans, and Azure Hybrid Benefit
 
 - Azure Reserved VM Instances: commit to VM types/region for 1 or 3 years; typical savings 30-55%.
-- Azure Savings Plans: commit to spend for compute for 1 or 3 years — similar flexibility to AWS Savings Plans.
+- Azure Savings Plans: commit to spend for compute for 1 or 3 years  similar flexibility to AWS Savings Plans.
 - Azure Hybrid Benefit (AHB): re-use existing Windows Server / SQL Server licenses with Software Assurance or eligible subscriptions to remove OS licensing cost from VM pricing.
 
 Example (Windows VM + AHB + Reserved):
@@ -528,7 +496,7 @@ Example (Windows VM + AHB + Reserved):
 
 - Right-size first, then commit: analyze steady-state usage over 2–4 weeks before buying commitments.
 - Use Savings Plans for flexibility if you plan instance-family migrations or use autoscaling groups.
-- Use Azure Hybrid Benefit when you have eligible licenses — immediate and recurring savings.
+- Use Azure Hybrid Benefit when you have eligible licenses  immediate and recurring savings.
 - Combine CDN + lifecycle policies to reduce egress and storage before committing heavily to compute.
 
 Next steps:
@@ -591,14 +559,14 @@ Next steps:
 
 ## Deliverables included in repository
 
-- `cloude pricing/PHASE1_SPEC.md` — Phase 1 planning
-- `cloude pricing/PHASE2_AWS.md` — AWS cost estimation
-- `cloude pricing/PHASE3_AZURE.md` — Azure cost estimation
-- `cloude pricing/PHASE4_NETWORKING.md` — Networking analysis
-- `cloude pricing/PHASE5_DISCOUNTS.md` — Discounts & savings
-- `cloude pricing/savings_1yr.csv` — Modeled 1-year savings
-- `cloude pricing/savings_3yr.csv` — Modeled 3-year savings
-- `cloude pricing/aws_estimate.csv`, `azure_estimate.csv`, `comparison_estimates.csv` — baseline estimates
+- `cloude pricing/PHASE1_SPEC.md`  Phase 1 planning
+- `cloude pricing/PHASE2_AWS.md`  AWS cost estimation
+- `cloude pricing/PHASE3_AZURE.md`  Azure cost estimation
+- `cloude pricing/PHASE4_NETWORKING.md`  Networking analysis
+- `cloude pricing/PHASE5_DISCOUNTS.md`  Discounts & savings
+- `cloude pricing/savings_1yr.csv`  Modeled 1-year savings
+- `cloude pricing/savings_3yr.csv`  Modeled 3-year savings
+- `cloude pricing/aws_estimate.csv`, `azure_estimate.csv`, `comparison_estimates.csv`  baseline estimates
 
 ---
 

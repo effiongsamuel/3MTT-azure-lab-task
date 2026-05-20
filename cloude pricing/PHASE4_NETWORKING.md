@@ -1,4 +1,4 @@
-# Phase 4 — Networking Cost Analysis
+# Phase 4  Networking Cost Analysis
 
 This document compares networking costs for AWS and Azure for the Phase 1 application and explains multi-zone, outbound, and load-balancer transfer impacts.
 
@@ -43,7 +43,7 @@ Cost formula (simplified):
 
 - Pros: higher availability and resilience; traffic localized within zone reduces cross-AZ egress if clients are zonal-aware.
 - Cons: increased inter-zone replication/sync costs for stateful services (DB replication, shared caches), possible cross-zone load balancing charges.
-- Recommendation: Minimize cross-AZ chatter — use regional services (managed DB Multi-AZ is optimized) and prefer async replication where possible.
+- Recommendation: Minimize cross-AZ chatter  use regional services (managed DB Multi-AZ is optimized) and prefer async replication where possible.
 
 ## Hidden networking costs to watch for
 
@@ -54,9 +54,9 @@ Cost formula (simplified):
 
 ## Scalability impact and real-world examples
 
-- Example 1 — Read-replica sync: a reporting replica replicates 500 GB/month from primary. If cross-AZ at $0.02/GB = $10/month — small.
-- Example 2 — Backup and restore: Restoring a 200 GB snapshot across regions will incur regional transfer fees; plan backup retention and location to optimize.
-- Example 3 — CDN impact: Offloading 1.5 TB of static assets to CDN reduces origin egress by 75% — direct egress cost savings significant.
+- Example 1  Read-replica sync: a reporting replica replicates 500 GB/month from primary. If cross-AZ at $0.02/GB = $10/month  small.
+- Example 2  Backup and restore: Restoring a 200 GB snapshot across regions will incur regional transfer fees; plan backup retention and location to optimize.
+- Example 3  CDN impact: Offloading 1.5 TB of static assets to CDN reduces origin egress by 75%  direct egress cost savings significant.
 
 ## Networking comparison table (summary)
 
@@ -98,10 +98,10 @@ Example cost calculations:
 Notes:
 
 - These are illustrative; actual tier boundaries and rates vary by region and over time. Use provider price pages or calculators for exact quotes.
-- For our baseline app (2 TB egress), egress is a dominant cost — consider CDN to reduce origin egress.
+- For our baseline app (2 TB egress), egress is a dominant cost  consider CDN to reduce origin egress.
 
 ## Per-GB tiered comparison (quick guidance)
 
 - Under ~10 TB/month: per-GB prices for AWS and Azure are similar; minor differences depend on negotiated pricing or region.
-- Between 10–50 TB/month: small differences in the next-tier rates begin to matter — negotiate or use Savings/commitment options.
+- Between 10–50 TB/month: small differences in the next-tier rates begin to matter  negotiate or use Savings/commitment options.
 - Above 50 TB/month: consider direct peering, CDN, or negotiated enterprise discounts to materially reduce egress cost.

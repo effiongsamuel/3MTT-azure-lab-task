@@ -1,4 +1,4 @@
-# Phase 5 — Discount & Savings Analysis
+# Phase 5  Discount & Savings Analysis
 
 This document compares AWS and Azure discount mechanisms and shows example savings for the Phase 1 application.
 
@@ -26,7 +26,7 @@ Cons:
 ## Azure: Reserved Instances, Savings Plans, and Azure Hybrid Benefit
 
 - Azure Reserved VM Instances: commit to VM types/region for 1 or 3 years; typical savings 30–55%.
-- Azure Savings Plans: commit to spend for compute for 1 or 3 years — similar flexibility to AWS Savings Plans.
+- Azure Savings Plans: commit to spend for compute for 1 or 3 years  similar flexibility to AWS Savings Plans.
 - Azure Hybrid Benefit (AHB): re-use existing Windows Server / SQL Server licenses with Software Assurance or eligible subscriptions to remove OS licensing cost from VM pricing.
 
 Example (Windows VM + AHB + Reserved):
@@ -68,7 +68,7 @@ Example (Windows VM + AHB + Reserved):
 ## Recommendations
 - Right-size first, then commit: analyze steady-state usage over 2–4 weeks before buying commitments.
 - Use Savings Plans for flexibility if you plan instance-family migrations or use autoscaling groups.
-- Use Azure Hybrid Benefit when you have eligible licenses — immediate and recurring savings.
+- Use Azure Hybrid Benefit when you have eligible licenses  immediate and recurring savings.
 - Combine CDN + lifecycle policies to reduce egress and storage before committing heavily to compute.
 
 Next steps:

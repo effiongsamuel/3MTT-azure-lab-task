@@ -1,4 +1,4 @@
-# Phase 6 — Final Comparison Report
+# Phase 6  Final Comparison Report
 
 ## Executive summary
 
@@ -53,14 +53,14 @@
 
 ## Deliverables included in repository
 
-- `cloude pricing/PHASE1_SPEC.md` — Phase 1 planning
-- `cloude pricing/PHASE2_AWS.md` — AWS cost estimation
-- `cloude pricing/PHASE3_AZURE.md` — Azure cost estimation
-- `cloude pricing/PHASE4_NETWORKING.md` — Networking analysis
-- `cloude pricing/PHASE5_DISCOUNTS.md` — Discounts & savings
-- `cloude pricing/savings_1yr.csv` — Modeled 1-year savings
-- `cloude pricing/savings_3yr.csv` — Modeled 3-year savings
-- `cloude pricing/aws_estimate.csv`, `azure_estimate.csv`, `comparison_estimates.csv` — baseline estimates
+- `cloude pricing/PHASE1_SPEC.md`  Phase 1 planning
+- `cloude pricing/PHASE2_AWS.md`  AWS cost estimation
+- `cloude pricing/PHASE3_AZURE.md`  Azure cost estimation
+- `cloude pricing/PHASE4_NETWORKING.md`  Networking analysis
+- `cloude pricing/PHASE5_DISCOUNTS.md`  Discounts & savings
+- `cloude pricing/savings_1yr.csv`  Modeled 1-year savings
+- `cloude pricing/savings_3yr.csv`  Modeled 3-year savings
+- `cloude pricing/aws_estimate.csv`, `azure_estimate.csv`, `comparison_estimates.csv`  baseline estimates
 
 ---
 

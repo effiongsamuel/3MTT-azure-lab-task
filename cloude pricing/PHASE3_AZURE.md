@@ -4,7 +4,7 @@ This document guides using the Azure Pricing Calculator and provides example mon
 
 ## Recommended Azure regions
 
-- Primary recommendation: `East US (eastus)` — good service coverage and typical price competitiveness.
+- Primary recommendation: `East US (eastus)`  good service coverage and typical price competitiveness.
 - Alternate regions: `West Europe (westeurope)`, `Southeast Asia` for APAC customers.
 
 ## Services to include in the Azure Pricing Calculator
@@ -30,7 +30,7 @@ This document guides using the Azure Pricing Calculator and provides example mon
 2. Windows VM scenario (with Azure Hybrid Benefit)
    - VM size: `Standard_D2s_v3` equivalent (2 vCPU, 8 GB RAM)
    - Quantity: baseline 2 instances, average 3
-   - OS: Windows Server — apply Azure Hybrid Benefit to reuse existing Windows Server licenses with Software Assurance or eligible subscriptions to reduce OS cost
+   - OS: Windows Server  apply Azure Hybrid Benefit to reuse existing Windows Server licenses with Software Assurance or eligible subscriptions to reduce OS cost
    - Managed disk: Premium SSD P10 (128 GB)
 
 ---
@@ -46,7 +46,7 @@ This document guides using the Azure Pricing Calculator and provides example mon
    - Managed disk: select Premium SSD (e.g., 128 GB)
    - For Windows scenario: toggle `Azure Hybrid Benefit` (if you have eligible licenses) to reduce OS charge
 
-3. Add "Storage — Blob Storage"
+3. Add "Storage  Blob Storage"
    - Region: `East US`
    - Tier: Hot
    - Data: 500 GB
@@ -71,7 +71,7 @@ This document guides using the Azure Pricing Calculator and provides example mon
 
 ---
 
-## Estimated monthly pricing (approximate — use Azure Calculator for exact values)
+## Estimated monthly pricing (approximate  use Azure Calculator for exact values)
 
 All costs approximated for `eastus` as of May 2026 and rounded.
 
@@ -90,7 +90,7 @@ All costs approximated for `eastus` as of May 2026 and rounded.
 
 Notes:
 
-- Windows VMs without Azure Hybrid Benefit will be noticeably higher due to OS licensing — Hybrid Benefit reduces the OS portion.
+- Windows VMs without Azure Hybrid Benefit will be noticeably higher due to OS licensing  Hybrid Benefit reduces the OS portion.
 - Azure often bundles some networking efficiencies; using Azure CDN reduces egress for static content.
 
 ## Explain Azure Hybrid Benefit
@@ -134,7 +134,7 @@ Disadvantages:
 ## Markdown-ready summary (for README)
 
 ```
-Phase 3 — Azure Cost Estimation Summary
+Phase 3  Azure Cost Estimation Summary
 
 - Region: East US
 - Linux scenario monthly example: $~532

@@ -1,4 +1,4 @@
-# Phase 2 — AWS Cost Estimation
+# Phase 2  AWS Cost Estimation
 
 This document guides configuring the AWS Pricing Calculator and provides an estimated monthly cost table for the Phase 1 application assumptions.
 
@@ -9,11 +9,11 @@ This document guides configuring the AWS Pricing Calculator and provides an esti
 
 ## Services to include in the AWS Pricing Calculator
 
-- EC2 (Linux) — App/Web servers (use T3/T4g family for burstable workloads)
-- RDS for PostgreSQL (Multi-AZ) — Managed DB
-- ElastiCache (Redis) — Managed cache
-- S3 Standard — Object storage (500 GB assumed)
-- Data Transfer Out — 2 TB/month outbound
+- EC2 (Linux)  App/Web servers (use T3/T4g family for burstable workloads)
+- RDS for PostgreSQL (Multi-AZ)  Managed DB
+- ElastiCache (Redis)  Managed cache
+- S3 Standard  Object storage (500 GB assumed)
+- Data Transfer Out  2 TB/month outbound
 - Application Load Balancer (ALB)
 - Backup / Snapshot storage (RDS snapshots beyond free backup allotment)
 
@@ -40,7 +40,7 @@ This document guides configuring the AWS Pricing Calculator and provides an esti
 
 4. Add "ElastiCache (Redis)"
    - Region: `us-east-1`
-   - Node type: small (1 vCPU / 2 GB) — pick a `cache.t3.small` equivalent
+   - Node type: small (1 vCPU / 2 GB)  pick a `cache.t3.small` equivalent
    - Quantity: 1; Multi-AZ optional for high availability (adds cost)
 
 5. Add "Amazon S3"
@@ -66,12 +66,12 @@ This document guides configuring the AWS Pricing Calculator and provides an esti
 
 ## Estimated monthly pricing (approximate; USE calculator for precise numbers)
 
-Estimates below are conservative, rounded to the nearest dollar, and based on `us-east-1` public pricing approximations as of May 2026. These are examples — run the AWS Pricing Calculator for exact numbers.
+Estimates below are conservative, rounded to the nearest dollar, and based on `us-east-1` public pricing approximations as of May 2026. These are examples  run the AWS Pricing Calculator for exact numbers.
 
 | Item | Units / Notes | Est. monthly cost (USD) |
 |---|---:|---:|
 | EC2 app servers (t3.medium) | avg 3 instances × 730 hrs × ~$0.0416/hr | $91 |
-| RDS PostgreSQL (db.t3.large) Multi-AZ | 1 primary + standby — db instance ~$0.10/hr | $150 |
+| RDS PostgreSQL (db.t3.large) Multi-AZ | 1 primary + standby  db instance ~$0.10/hr | $150 |
 | RDS storage (100 GB gp3) | $0.08 / GB-month | $8 |
 | RDS automated backups / snapshots | 100 GB snapshot budget | $10 |
 | ElastiCache Redis (small) | 1 node | $20 |
@@ -93,7 +93,7 @@ Notes:
 - Data transfer (egress): Internet egress is charged per GB and adds up quickly at TB scale.
 - Managed database: RDS Multi-AZ instance hours and storage are constant monthly costs.
 - Compute scale: EC2 autoscaling during peaks increases cost; choose instance family carefully.
-- Load balancing & LCUs: ALB charges include hourly and usage-based LCU costs — heavy short-lived connections increase cost.
+- Load balancing & LCUs: ALB charges include hourly and usage-based LCU costs  heavy short-lived connections increase cost.
 - Storage requests/tiers: S3 requests are cheap, but lifecycle to Infrequent Access or Glacier can reduce storage cost.
 
 ## AWS cost optimization recommendations
@@ -120,7 +120,7 @@ Notes:
 Use this snippet in your project README or reports:
 
 ```
-Phase 2 — AWS Cost Estimation Summary
+Phase 2  AWS Cost Estimation Summary
 
 - Region: US East (N. Virginia)
 - Monthly estimated cost (example): $~536
