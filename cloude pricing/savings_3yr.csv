@@ -1,0 +1,4 @@
+Provider,Scenario,Baseline_Monthly_USD,Discounted_Monthly_USD,Monthly_Savings_USD,Percent_Savings,Annual_Savings_USD
+AWS,Baseline (apply 3yr deeper RIs/Savings),536.00,435.05,100.95,18.85,1,211.40
+Azure,Linux (3yr Reserved VM),532.00,427.00,105.00,19.73,1,260.00
+Azure,Windows w/ AHB (3yr Reserved VM),482.00,382.00,100.00,20.75,1,200.00

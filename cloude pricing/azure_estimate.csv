@@ -1,0 +1,11 @@
+Item,Units,Linux_USD,Windows_With_AHB_USD
+VM compute (D2s_v3 equiv),avg 3 instances,210,260
+Azure Hybrid Benefit (savings),,N/A,-60
+Managed disks (128 GB × 3),disk,60,60
+Blob storage (500 GB, Hot),GB-month,9,9
+Load Balancer / App GW,monthly,25,25
+Backup (Recovery Services),monthly,25,25
+Data transfer out,2048 GB,178,178
+Monitoring & logs,monthly,10,10
+Misc (DNS, extra services),monthly,15,15
+Estimated monthly total, ,532,482

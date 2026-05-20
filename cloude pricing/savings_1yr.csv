@@ -1,0 +1,4 @@
+Provider,Scenario,Baseline_Monthly_USD,Discounted_Monthly_USD,Monthly_Savings_USD,Percent_Savings,Annual_Savings_USD
+AWS,Baseline (apply 1yr SavingsPlan+RDS RI),536.00,463.70,72.30,13.48,867.60
+Azure,Linux (1yr Reserved VM),532.00,458.50,73.50,13.82,882.00
+Azure,Windows w/ AHB (1yr Reserved VM),482.00,412.00,70.00,14.52,840.00

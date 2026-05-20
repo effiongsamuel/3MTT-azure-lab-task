@@ -1,0 +1,12 @@
+Item,AWS_USD,Azure_Linux_USD,Azure_Windows_AHB_USD
+EC2 / VM compute,91,210,260
+Managed DB (RDS/Azure DB),150, (included in VM/DB choice), (see DB options)
+Managed disk / storage,8,60,60
+Object storage (S3/Blob),12,9,9
+Cache (Redis),20, (Azure Cache cost optional), (optional)
+Load Balancer,30,25,25
+Data transfer out,185,178,178
+Backups / snapshots,10,25,25
+Monitoring & logs,10,10,10
+Misc,20,15,15
+Estimated monthly total,536,532,482

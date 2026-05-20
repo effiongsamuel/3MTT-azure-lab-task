@@ -1,0 +1,12 @@
+Item,Units,EstMonthlyCost_USD
+EC2 app servers (t3.medium),avg 3 instances,91
+RDS PostgreSQL (db.t3.large) Multi-AZ,instance hours,150
+RDS storage (100 GB gp3),GB-month,8
+RDS automated backups / snapshots,GB-month,10
+ElastiCache Redis (small),node,20
+S3 Standard storage,500 GB,12
+Data transfer out (Internet),2048 GB,185
+Application Load Balancer (ALB),monthly,30
+Monitoring & logging (CloudWatch),monthly,10
+Misc (DNS, NAT gateway small usage),monthly,20
+Estimated monthly total, ,536
