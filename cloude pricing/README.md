@@ -173,7 +173,7 @@ Notes:
 Use this snippet in your project README or reports:
 
 ```
-Phase 2 — AWS Cost Estimation Summary
+Phase 2 AWS Cost Estimation Summary
 
 - Region: US East (N. Virginia)
 - Monthly estimated cost (example): $~536
@@ -191,7 +191,7 @@ This document guides using the Azure Pricing Calculator and provides example mon
 
 ## Recommended Azure regions
 
-- Primary recommendation: `East US (eastus)` — good service coverage and typical price competitiveness.
+- Primary recommendation: `East US (eastus)` good service coverage and typical price competitiveness.
 - Alternate regions: `West Europe (westeurope)`, `Southeast Asia` for APAC customers.
 
 ## Services to include in the Azure Pricing Calculator
@@ -210,7 +210,7 @@ This document guides using the Azure Pricing Calculator and provides example mon
 
 1. Linux VM scenario (production)
    - VM size: `Standard_D2s_v3` equivalent (2 vCPU, 8 GB RAM) or `B2ms` for burstable workloads
-   - Quantity: baseline 2 instances, autoscale 2–6; estimate average usage 3 instances
+   - Quantity: baseline 2 instances, autoscale 2-6; estimate average usage 3 instances
    - OS: Linux (no Windows licensing charge)
    - Managed disk: Premium SSD P10 (128 GB) or 30 GB OS disk as needed
 
@@ -233,7 +233,7 @@ This document guides using the Azure Pricing Calculator and provides example mon
    - Managed disk: select Premium SSD (e.g., 128 GB)
    - For Windows scenario: toggle `Azure Hybrid Benefit` (if you have eligible licenses) to reduce OS charge
 
-3. Add "Storage — Blob Storage"
+3. Add "Storage Blob Storage"
    - Region: `East US`
    - Tier: Hot
    - Data: 500 GB
@@ -258,7 +258,7 @@ This document guides using the Azure Pricing Calculator and provides example mon
 
 ---
 
-## Estimated monthly pricing (approximate — use Azure Calculator for exact values)
+## Estimated monthly pricing (approximate use Azure Calculator for exact values)
 
 All costs approximated for `eastus` as of May 2026 and rounded.
 
@@ -277,7 +277,7 @@ All costs approximated for `eastus` as of May 2026 and rounded.
 
 Notes:
 
-- Windows VMs without Azure Hybrid Benefit will be noticeably higher due to OS licensing — Hybrid Benefit reduces the OS portion.
+- Windows VMs without Azure Hybrid Benefit will be noticeably higher due to OS licensing Hybrid Benefit reduces the OS portion.
 - Azure often bundles some networking efficiencies; using Azure CDN reduces egress for static content.
 
 ## Explain Azure Hybrid Benefit
@@ -304,7 +304,7 @@ Disadvantages:
 - Apply Azure Hybrid Benefit for Windows workloads when eligible.
 - Use B-series burstable VMs for low baseline CPU workloads to reduce steady-state cost.
 - Use Azure CDN to reduce egress costs for static assets.
-- Use Reserved VM Instances (1- or 3-year) or Azure Savings Plans for compute-heavy predictable workloads.
+- Use Reserved VM Instances (1 or 3 year) or Azure Savings Plans for compute-heavy predictable workloads.
 - Use lifecycle management for Blob Storage: move to Cool/Archive for older objects.
 
 ## Screenshots to capture
@@ -321,7 +321,7 @@ Disadvantages:
 ## Markdown-ready summary (for README)
 
 ```
-Phase 3 — Azure Cost Estimation Summary
+Phase 3 Azure Cost Estimation Summary
 
 - Region: East US
 - Linux scenario monthly example: $~532
@@ -339,7 +339,7 @@ Next steps:
 - I can produce a CSV export of both AWS and Azure estimates and a side-by-side cost table for the repository. Confirm and I'll generate them.
 \n\n# PHASE4_NETWORKING.md\n
 
-# Phase 4 — Networking Cost Analysis
+# Phase 4 Networking Cost Analysis
 
 This document compares networking costs for AWS and Azure for the Phase 1 application and explains multi-zone, outbound, and load-balancer transfer impacts.
 
@@ -352,7 +352,7 @@ This document compares networking costs for AWS and Azure for the Phase 1 applic
 
 ## Key vendor behaviors (summary)
 
-- AWS: charges for data transfer between AZs within the same region for some services (e.g., AZ-to-AZ traffic for EC2 across AZs often billed per-GB). Internet egress billed per-GB with tiered pricing. Load balancers (ALB/NLB) charge hourly + LCU/data processed.
+- AWS: charges for data transfer between AZs within the same region for some services (e.g., AZtoAZ traffic for EC2 across AZs often billed per-GB). Internet egress billed per-GB with tiered pricing. Load balancers (ALB/NLB) charge hourly + LCU/data processed.
 - Azure: charges for inter-zone or inter-region traffic vary; intra-region zone traffic often billed, but specifics depend on service. Outbound to internet billed per-GB. Load Balancer / Application Gateway have processing and data charges.
 
 ## Inter-zone traffic pricing (typical formulas)
@@ -444,7 +444,7 @@ Notes:
 ## Per-GB tiered comparison (quick guidance)
 
 - Under ~10 TB/month: per-GB prices for AWS and Azure are similar; minor differences depend on negotiated pricing or region.
-- Between 10–50 TB/month: small differences in the next-tier rates begin to matter — negotiate or use Savings/commitment options.
+- Between 10–50 TB/month: small differences in the next-tier rates begin to matter negotiate or use Savings/commitment options.
 - Above 50 TB/month: consider direct peering, CDN, or negotiated enterprise discounts to materially reduce egress cost.
 \n\n# PHASE5_DISCOUNTS.md\n
 
@@ -454,7 +454,7 @@ This document compares AWS and Azure discount mechanisms and shows example savin
 
 ## Overview
 
-- Commitment-based discounts reduce compute and sometimes licensing costs in exchange for 1- or 3-year commitments.
+- Commitment-based discounts reduce compute and sometimes licensing costs in exchange for 1 or 3 year commitments.
 - Key AWS mechanisms: Reserved Instances (RIs) and Savings Plans.
 - Key Azure mechanisms: Reserved VM Instances (RIs), Azure Savings Plans, and Azure Hybrid Benefit (AHB) for Windows/SQL Server licensing.
 
@@ -479,7 +479,7 @@ Cons:
 
 ## Azure: Reserved Instances, Savings Plans, and Azure Hybrid Benefit
 
-- Azure Reserved VM Instances: commit to VM types/region for 1 or 3 years; typical savings 30–55%.
+- Azure Reserved VM Instances: commit to VM types/region for 1 or 3 years; typical savings 30-55%.
 - Azure Savings Plans: commit to spend for compute for 1 or 3 years — similar flexibility to AWS Savings Plans.
 - Azure Hybrid Benefit (AHB): re-use existing Windows Server / SQL Server licenses with Software Assurance or eligible subscriptions to remove OS licensing cost from VM pricing.
 

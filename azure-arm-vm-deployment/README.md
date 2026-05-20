@@ -29,10 +29,10 @@ azure-arm-vm-deployment/
 
 The ARM template provided under `templates/azuredeploy.json` contains the following sections:
 
-- `parameters` — user-configurable values (VM size, admin username, SSH key, etc.)
-- `variables` — computed values used by resources
-- `resources` — definitions for Virtual Network, Subnet, Public IP, Network Security Group (NSG), Network Interface (NIC), and Virtual Machine
-- `outputs` — important values to be returned after deployment (public IP, VM id, etc.)
+- `parameters`  user-configurable values (VM size, admin username, SSH key, etc.)
+- `variables`  computed values used by resources
+- `resources`  definitions for Virtual Network, Subnet, Public IP, Network Security Group (NSG), Network Interface (NIC), and Virtual Machine
+- `outputs`  important values to be returned after deployment (public IP, VM id, etc.)
 
 Ensure the template includes the following resources:
 
