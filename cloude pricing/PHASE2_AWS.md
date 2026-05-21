@@ -4,7 +4,7 @@ This document guides configuring the AWS Pricing Calculator and provides an esti
 
 ## Recommended AWS regions
 
-- Primary recommendation: `US East (N. Virginia) - us-east-1` (broadest service coverage, typically lowest prices).
+- Primary recommendation: `US East (N. Virginia),us-east-1` (broadest service coverage, typically lowest prices).
 - Alternate regions: `US West (Oregon)`, `EU (Ireland)` for EU customers.
 
 ## Services to include in the AWS Pricing Calculator

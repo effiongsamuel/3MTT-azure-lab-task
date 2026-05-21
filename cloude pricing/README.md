@@ -2,11 +2,11 @@
 
 ## Cloud Cost Comparison  AWS vs Azure
 
-This repository contains a step-by-step cloud cost comparison project between Amazon Web Services and Microsoft Azure, scoped to a small SaaS invoicing and payments application.
+This repository contains a step by step cloud cost comparison project between Amazon Web Services and Microsoft Azure, scoped to a small SaaS invoicing and payments application.
 
 ## Project objectives
 
-- Provide end-to-end cost estimates for AWS and Azure for a realistic small-business SaaS workload.
+- Provide end to end cost estimates for AWS and Azure for a realistic small business SaaS workload.
 - Compare Linux and Windows VM scenarios and quantify the impact of Azure Hybrid Benefit.
 - Analyze networking, backup, and storage costs and highlight major cost drivers.
 - Model 1- and 3-year commitment savings and produce visual charts for decision-making.
@@ -30,7 +30,7 @@ This repository contains a step-by-step cloud cost comparison project between Am
 
 ## How to use
 
-1. Open `PHASE2_AWS.md` and `PHASE3_AZURE.md` and follow the step-by-step instructions to reproduce calculator inputs.
+1. Open `PHASE2_AWS.md` and `PHASE3_AZURE.md` and follow the step by step instructions to reproduce calculator inputs.
 2. Inspect CSVs in this folder to reproduce charts or export to Excel.
 3. Review `PHASE6_COMPARISON.md` for executive recommendations.
 
@@ -46,7 +46,7 @@ This document guides configuring the AWS Pricing Calculator and provides an esti
 
 ## Recommended AWS regions
 
-- Primary recommendation: `US East (N. Virginia) - us-east-1` (broadest service coverage, typically lowest prices).
+- Primary recommendation: `US East (N. Virginia),us-east-1` (broadest service coverage, typically lowest prices).
 - Alternate regions: `US West (Oregon)`, `EU (Ireland)` for EU customers.
 
 ## Services to include in the AWS Pricing Calculator
@@ -141,7 +141,7 @@ Notes:
 ## AWS cost optimization recommendations
 
 - Use Graviton-based instances (`t4g`) where supported to reduce instance cost.
-- Use AWS Savings Plans or Reserved Instances for predictable steady-state workloads (commit 1–3 years).
+- Use AWS Savings Plans or Reserved Instances for predictable steady state workloads (commit 1–3 years).
 - Offload static assets to CloudFront to reduce egress costs.
 - Use lifecycle policies to move older objects to S3 IA / Glacier.
 - Right-size RDS and consider serverless or Aurora if the workload fits.
@@ -291,8 +291,8 @@ This document compares networking costs for AWS and Azure for the Phase 1 applic
 
 ## Key vendor behaviors (summary)
 
-- AWS: charges for data transfer between AZs within the same region for some services (e.g., AZtoAZ traffic for EC2 across AZs often billed per-GB). Internet egress billed per-GB with tiered pricing. Load balancers (ALB/NLB) charge hourly + LCU/data processed.
-- Azure: charges for inter-zone or inter region traffic vary; intra region zone traffic often billed, but specifics depend on service. Outbound to internet billed per-GB. Load Balancer / Application Gateway have processing and data charges.
+- AWS: charges for data transfer between AZs within the same region for some services (e.g., AZtoAZ traffic for EC2 across AZs often billed pe GB). Internet egress billed per GB with tiered pricing. Load balancers (ALB/NLB) charge hourly + LCU/data processed.
+- Azure: charges for inter-zone or inter region traffic vary; intra region zone traffic often billed, but specifics depend on service. Outbound to internet billed per GB. Load Balancer / Application Gateway have processing and data charges.
 
 ## Inter-zone traffic pricing (typical formulas)
 
@@ -321,20 +321,20 @@ Cost formula (simplified):
 
 ## Multi-zone architecture cost implications
 
-- Pros: higher availability and resilience; traffic localized within zone reduces cross-AZ egress if clients are zonal aware.
+- Pros: higher availability and resilience; traffic localized within zone reduces cross AZ egress if clients are zonal aware.
 - Cons: increased inter zone replication/sync costs for stateful services (DB replication, shared caches), possible cross zone load balancing charges.
 - Recommendation: Minimize cross-AZ chatter  use regional services (managed DB Multi-AZ is optimized) and prefer async replication where possible.
 
 ## Hidden networking costs to watch for
 
-- NAT Gateway / egress gateway per-hour and per GB charges
-- Cross-region replication costs (DB or object replication)
+- NAT Gateway / egress gateway per hour and per GB charges
+- Cross region replication costs (DB or object replication)
 - PrivateLink / VPC endpoints data processing costs
 - VPN/ExpressRoute / Direct Connect port and data fees for hybrid setups
 
 ## Scalability impact and real-world examples
 
-- Example 1  Read-replica sync: a reporting replica replicates 500 GB/month from primary. If cross-AZ at $0.02/GB = $10/month  small.
+- Example 1  Read replica sync: a reporting replica replicates 500 GB/month from primary. If cross AZ at $0.02/GB = $10/month  small.
 - Example 2  Backup and restore: Restoring a 200 GB snapshot across regions will incur regional transfer fees; plan backup retention and location to optimize.
 - Example 3  CDN impact: Offloading 1.5 TB of static assets to CDN reduces origin egress by 75%  direct egress cost savings significant.
 
@@ -342,10 +342,10 @@ Cost formula (simplified):
 
 | Category | AWS (typical) | Azure (typical) |
 |---|---:|---:|
-| Inter AZ transfer | ~$0.01–$0.02/GB | region-dependent, often similar |
+| Inter AZ transfer | ~$0.01–$0.02/GB | region dependent, often similar |
 | Outbound internet | ~$0.09/GB (first TB ranges higher) | ~$0.087/GB (varies by zone) |
 | Load balancer | hourly + LCU/data | hourly + data processing (App GW) |
-| NAT Gateway | per hour + per GB | similar per-hour + per-GB |
+| NAT Gateway | per hour + per GB | similar per hour + per GB |
 
 ## Recommendations to reduce networking costs
 
@@ -358,7 +358,7 @@ Cost formula (simplified):
 
 ## Tiered per-GB examples and cost table
 
-Assumed example tiered rates (typical, region-dependent):
+Assumed example tiered rates (typical, region dependent):
 
 - AWS egress tiers: 0–10 TB @ $0.090/GB; next 40 TB @ $0.085/GB; next 50 TB @ $0.070/GB
 - Azure egress tiers: 0–10 TB @ $0.087/GB; next 40 TB @ $0.083/GB; next 50 TB @ $0.065/GB
@@ -399,13 +399,13 @@ This document compares AWS and Azure discount mechanisms and shows example savin
 
 Example (EC2 compute):
 
-- Baseline EC2 monthly (on-demand): $91 → annual $1,092
+- Baseline EC2 monthly (on demand): $91 → annual $1,092
 - 1-year Savings Plan ~30% savings → annual ~$764 (monthly ~$64) → monthly saving ~$27
 
 Pros:
 
 - Savings Plans: flexible application across instance families and regions.
-- RIs: deeper discounts for specific, steady-state instances.
+- RIs: deeper discounts for specific, steady state instances.
 
 Cons:
 
@@ -419,11 +419,11 @@ Cons:
 
 Example (Windows VM + AHB + Reserved):
 
-- Baseline Windows monthly (on-demand): $260 → annual $3,120
-- Apply Azure Hybrid Benefit: -$60/mo → $200/mo → annual $2,400
+- Baseline Windows monthly (on demand): $260 → annual $3,120
+- Apply Azure Hybrid Benefit: $60/mo → $200/mo → annual $2,400
 - Add 1-year Reserved Instance 35% discount → $1,560/yr → monthly ~$130 (total savings from on demand ~50%)
 
-## Commitment-based pricing vs Pay-as-you-go
+## Commitment based pricing vs Pay-as-you-go
 
 - Pay-as-you-go: maximum flexibility, no commitment, higher unit cost.
 - Commitment (1–3 year): lower unit cost, risk if usage patterns change.
@@ -496,7 +496,7 @@ Example (Windows VM + AHB + Reserved):
 
 - Egress is the largest single variable; 2 TB/month baseline leads to ~$178–185/month depending on provider.
 - Use CDN (CloudFront/Azure CDN) to reduce origin egress for static assets; this often yields the largest marginal savings.
-- Multi-AZ architectures increase resilience but can add inter-AZ transfer costs; minimize chatty cross-AZ traffic.
+- Multi-AZ architectures increase resilience but can add inter-AZ transfer costs; minimize chatty cross AZ traffic.
 
 ## Discount & savings analysis (summary)
 

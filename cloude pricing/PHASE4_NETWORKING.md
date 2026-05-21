@@ -41,7 +41,7 @@ Cost formula (simplified):
 
 ## Multi-zone architecture cost implications
 
-- Pros: higher availability and resilience; traffic localized within zone reduces cross-AZ egress if clients are zonal-aware.
+- Pros: higher availability and resilience; traffic localized within zone reduces cross AZ egress if clients are zonal-aware.
 - Cons: increased inter-zone replication/sync costs for stateful services (DB replication, shared caches), possible cross-zone load balancing charges.
 - Recommendation: Minimize cross-AZ chatter  use regional services (managed DB Multi-AZ is optimized) and prefer async replication where possible.
 
@@ -54,7 +54,7 @@ Cost formula (simplified):
 
 ## Scalability impact and real-world examples
 
-- Example 1  Read-replica sync: a reporting replica replicates 500 GB/month from primary. If cross-AZ at $0.02/GB = $10/month  small.
+- Example 1  Read-replica sync: a reporting replica replicates 500 GB/month from primary. If cross AZ at $0.02/GB = $10/month  small.
 - Example 2  Backup and restore: Restoring a 200 GB snapshot across regions will incur regional transfer fees; plan backup retention and location to optimize.
 - Example 3  CDN impact: Offloading 1.5 TB of static assets to CDN reduces origin egress by 75%  direct egress cost savings significant.
 
@@ -75,10 +75,6 @@ Cost formula (simplified):
 - Monitor egress with cloud billing alerts and use cost allocation tags to attribute traffic to services.
 
 ---
-
-Next steps:
-
-- I can calculate specific per-GB examples for your chosen region(s) and produce a table comparing per-GB costs at multiple volume tiers (e.g., 0–10 TB, 10–50 TB). Confirm and I'll compute those numbers.
 
 ## Tiered per-GB examples and cost table
 
