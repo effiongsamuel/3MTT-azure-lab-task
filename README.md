@@ -26,7 +26,17 @@ This repository contains Azure fundamentals lab work and ARM template-based VM d
 │   ├── logs/
 │   │   └── deployment-output.txt    # Deployment output logs
 │   └── .gitignore
-│
+
+├── cloude pricing/
+│   ├── README.md                    # Cloud cost comparison and CSVs
+│   ├── aws_estimate.csv
+│   ├── azure_estimate.csv
+│   ├── comparison_estimates.csv
+│   ├── savings_1yr.csv
+│   ├── savings_3yr.csv
+│   └── screenshots/
+│       └── (charts and diagrams)
+
 ├── README.md                        # This file
 └── LICENSE
 ```
@@ -81,6 +91,19 @@ This repository contains Azure fundamentals lab work and ARM template-based VM d
 **Read more:** See [azure-arm-vm-deployment/README.md](azure-arm-vm-deployment/README.md)
 
 ---
+
+### 3. `cloude pricing/` - Cloud Cost Comparison
+
+**Purpose:** Cost modelling and comparison between AWS and Azure for the Phase 1 SaaS workload.
+
+**Contents:**
+- CSV exports of pricing estimates (`aws_estimate.csv`, `azure_estimate.csv`, `comparison_estimates.csv`)
+- Modeled savings files (`savings_1yr.csv`, `savings_3yr.csv`)
+- Generated charts and screenshots in `screenshots/`
+- Phase documents: `PHASE2_AWS.md`, `PHASE3_AZURE.md`, `PHASE4_NETWORKING.md`, `PHASE5_DISCOUNTS.md`, `PHASE6_COMPARISON.md`
+
+**Read more:** See [cloude pricing/README.md](cloude%20pricing/README.md)
+
 
 ## 🚀 Quick Start
 

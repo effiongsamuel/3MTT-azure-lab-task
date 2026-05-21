@@ -1,4 +1,4 @@
-# Phase 6  Final Comparison Report
+# Phase 6 Comparison Report
 
 ## Executive summary
 
@@ -50,22 +50,3 @@
 2. Use CDN to reduce egress; this often reduces monthly costs more than compute optimizations for traffic-heavy apps.
 3. For Windows-heavy shops with existing licenses, choose Azure and apply Azure Hybrid Benefit.
 4. Purchase Savings Plans / Reserved Instances only after steady-state usage is confirmed; use Savings Plans for flexibility if you expect instance-family migrations.
-
-## Deliverables included in repository
-
-- `cloude pricing/PHASE1_SPEC.md`  Phase 1 planning
-- `cloude pricing/PHASE2_AWS.md`  AWS cost estimation
-- `cloude pricing/PHASE3_AZURE.md`  Azure cost estimation
-- `cloude pricing/PHASE4_NETWORKING.md`  Networking analysis
-- `cloude pricing/PHASE5_DISCOUNTS.md`  Discounts & savings
-- `cloude pricing/savings_1yr.csv`  Modeled 1-year savings
-- `cloude pricing/savings_3yr.csv`  Modeled 3-year savings
-- `cloude pricing/aws_estimate.csv`, `azure_estimate.csv`, `comparison_estimates.csv`  baseline estimates
-
----
-
-If you want, I can:
-- Generate simple charts (PNG) from the CSVs and add them to `cloude pricing/screenshots/`.
-- Produce a printable PDF report combining all phases.
-
-Next: generate `summary.txt` (Phase 7) and the repository README structure (Phase 8). Confirm and I'll proceed.

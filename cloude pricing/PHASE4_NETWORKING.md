@@ -102,6 +102,6 @@ Notes:
 
 ## Per-GB tiered comparison (quick guidance)
 
-- Under ~10 TB/month: per-GB prices for AWS and Azure are similar; minor differences depend on negotiated pricing or region.
-- Between 10–50 TB/month: small differences in the next-tier rates begin to matter  negotiate or use Savings/commitment options.
+- Under ~10 TB/month: per GB prices for AWS and Azure are similar; minor differences depend on negotiated pricing or region.
+- Between 10–50 TB/month: small differences in the next tier rates begin to matter  negotiate or use Savings/commitment options.
 - Above 50 TB/month: consider direct peering, CDN, or negotiated enterprise discounts to materially reduce egress cost.
