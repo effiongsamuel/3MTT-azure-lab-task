@@ -15,7 +15,7 @@ echo "  ⚠️  Password: $SQL_PASSWORD  ← SAVE THIS!"
 az sql server create \
   --resource-group "$RG_DEV" \
   --name "$SQL_SERVER" \
-  --location "$LOCATION" \
+  --location "$SQL_LOCATION" \
   --admin-user "$SQL_ADMIN" \
   --admin-password "$SQL_PASSWORD" \
   --output table

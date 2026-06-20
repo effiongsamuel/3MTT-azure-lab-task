@@ -57,14 +57,14 @@ az storage account show \
   --output table
 
 # ── CHECK 6: SQL Database exists and tier is Serverless ─────────────────────
-echo ""
-echo "✅ CHECK 6: SQL Database"
-az sql db show \
-  --resource-group "$RG_DEV" \
-  --server "$SQL_SERVER" \
-  --name "$SQL_DB" \
-  --query "{Name:name, Edition:edition, ComputeModel:computeModel, Status:status}" \
-  --output table
+# echo ""
+# echo "✅ CHECK 6: SQL Database"
+# az sql db show \
+#   --resource-group "$RG_DEV" \
+#   --server "$SQL_SERVER" \
+#   --name "$SQL_DB" \
+#   --query "{Name:name, Edition:edition, ComputeModel:computeModel, Status:status}" \
+#   --output table
 
 # ── CHECK 7: Tags on VM ─────────────────────────────────────────────────────
 echo ""

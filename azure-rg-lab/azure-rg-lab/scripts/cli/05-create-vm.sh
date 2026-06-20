@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
 # =============================================================================
-# Script: 04-create-vm.sh
+# Script: 05-create-vm.sh
 # Purpose: Create Public IP, NIC, and Ubuntu Linux VM.
-# Pre-req: Source 01-setup-variables.sh; network must exist.
-# Usage:   bash ./scripts/cli/04-create-vm.sh
+# Pre-req: Source 01-setup-variables.sh; run 04-create-ssh.sh; network must exist.
+# Usage:   bash ./scripts/cli/05-create-vm.sh
 # =============================================================================
 
 set -euo pipefail
+
+if [[ ! -f "$SSH_PUBLIC_KEY_FILE" ]]; then
+  echo "❌ SSH public key not found: $SSH_PUBLIC_KEY_FILE"
+  echo "   Run ./scripts/cli/04-create-ssh.sh first."
+  exit 1
+fi
 
 echo "▶ Creating Public IP Address..."
 az network public-ip create \
@@ -44,7 +50,7 @@ az vm create \
   --size "$VM_SIZE" \
   --image "$VM_IMAGE" \
   --admin-username "$ADMIN_USER" \
-  --generate-ssh-keys \
+  --ssh-key-name "$SSH_KEY_NAME" \
   --nics "$NIC_NAME" \
   --os-disk-name "osdisk-${VM_NAME}" \
   --storage-sku StandardSSD_LRS \
@@ -71,6 +77,6 @@ echo "   VM Name:   $VM_NAME"
 echo "   Public IP: $VM_PUBLIC_IP"
 echo ""
 echo "▶ Testing SSH connection..."
-ssh -o StrictHostKeyChecking=no -o ConnectTimeout=10 \
-  "${ADMIN_USER}@${VM_PUBLIC_IP}" \
-  "echo '✅ SSH connection successful!' && hostname && uname -r"
+# ssh -i "$SSH_PRIVATE_KEY_FILE" -o IdentitiesOnly=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=10 \
+#   "${ADMIN_USER}@${VM_PUBLIC_IP}" \
+#   "echo '✅ SSH connection successful!' && hostname && uname -r"

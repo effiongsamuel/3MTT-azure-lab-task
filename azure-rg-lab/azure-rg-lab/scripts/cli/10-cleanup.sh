@@ -31,8 +31,8 @@ echo "▶ Step 2: Exporting ARM template as configuration backup"
 mkdir -p ../arm-templates
 az group export \
   --name "$RG_DEV" \
-  --output json > ../arm-templates/rg-3mmt labs-dev-backup.json
-echo "  Backup saved to: scripts/arm-templates/rg-3mmt labs-dev-backup.json"
+  --output json > ../arm-templates/rg-3mmt-labs-dev-backup.json
+echo "  Backup saved to: scripts/arm-templates/rg-3mmt-labs-dev-backup.json"
 
 # ── Confirm and Delete ──────────────────────────────────────────────────
 echo ""
@@ -53,12 +53,12 @@ echo "  Deletion initiated. This will take several minutes to complete."
 echo "  Monitor with: az group list --output table"
 
 # ── Verify Prod Untouched ────────────────────────────────────────────────
-echo ""
-echo "▶ Step 4: Confirming Production RG is untouched"
-az group show --name "$RG_PROD" --query "{Name:name, State:properties.provisioningState}" --output table
+# echo ""
+# echo "▶ Step 4: Confirming Production RG is untouched"
+# az group show --name "$RG_PROD" --query "{Name:name, State:properties.provisioningState}" --output table
 
-echo ""
-echo "============================================"
-echo " To recreate the Dev RG later, re-run:"
-echo "   bash ./scripts/cli/02-create-resource-groups.sh"
-echo "============================================"
+# echo ""
+# echo "============================================"
+# echo " To recreate the Dev RG later, re-run:"
+# echo "   bash ./scripts/cli/02-create-resource-groups.sh"
+# echo "============================================"

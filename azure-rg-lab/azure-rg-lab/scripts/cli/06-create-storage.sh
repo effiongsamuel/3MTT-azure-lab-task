@@ -43,3 +43,10 @@ az storage account show \
   --name "$STORAGE_ACCOUNT" \
   --query "{Name:name, SKU:sku.name, Kind:kind, TLS:minimumTlsVersion, Location:location}" \
   --output table
+
+
+# ONLY IF YOU WANT TO ALLOW PUBLIC ACCESS TO THE BLOB CONTAINER (NOT RECOMMENDED):
+# az storage account update \
+#   --resource-group "$RG_DEV" \
+#   --name "$STORAGE_ACCOUNT" \
+#   --allow-blob-public-access true
