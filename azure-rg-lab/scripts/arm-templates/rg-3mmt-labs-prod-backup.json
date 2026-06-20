@@ -1,0 +1,449 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "networkInterfaces_nic_3mmt_labs_prod_001_name": {
+      "type": "String"
+    },
+    "networkSecurityGroups_nsg_3mmt_labs_prod_001_name": {
+      "type": "String"
+    },
+    "publicIPAddresses_pip_3mmt_labs_prod_001_name": {
+      "type": "String"
+    },
+    "sshPublicKeys_mySshKey_prod_name": {
+      "type": "String"
+    },
+    "storageAccounts_st3mmtlabsprod001_name": {
+      "type": "String"
+    },
+    "virtualMachines_vm_3mmt_labs_prod_001_name": {
+      "type": "String"
+    },
+    "virtualNetworks_vnet_3mmt_labs_prod_001_name": {
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2025-11-01",
+      "location": "eastus",
+      "name": "[parameters('sshPublicKeys_mySshKey_prod_name')]",
+      "properties": {
+        "publicKey": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJfKzQ3zGJHLgmMi+ljMiJa7sKl+5NwU+bwRc48RgsWY samuel.m1804892@st.futminna.edu.ng"
+      },
+      "tags": {
+        "costcenter": "CC-1001",
+        "department": "IT-Engineering",
+        "environment": "prod",
+        "owner": "samuel.m1804892@st.futminna.edu.ng",
+        "project": "azure-rg-lab"
+      },
+      "type": "Microsoft.Compute/sshPublicKeys"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "location": "eastus",
+      "name": "[parameters('networkSecurityGroups_nsg_3mmt_labs_prod_001_name')]",
+      "properties": {
+        "securityRules": [
+          {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups/securityRules', parameters('networkSecurityGroups_nsg_3mmt_labs_prod_001_name'), 'Allow-SSH-Inbound')]",
+            "name": "Allow-SSH-Inbound",
+            "properties": {
+              "access": "Allow",
+              "destinationAddressPrefix": "*",
+              "destinationAddressPrefixes": [],
+              "destinationPortRange": "22",
+              "destinationPortRanges": [],
+              "direction": "Inbound",
+              "priority": 100,
+              "protocol": "Tcp",
+              "sourceAddressPrefix": "102.91.133.226",
+              "sourceAddressPrefixes": [],
+              "sourcePortRange": "*",
+              "sourcePortRanges": []
+            }
+          }
+        ]
+      },
+      "tags": {
+        "costcenter": "CC-1001",
+        "department": "IT-Engineering",
+        "environment": "prod",
+        "owner": "samuel.m1804892@st.futminna.edu.ng",
+        "project": "azure-rg-lab"
+      },
+      "type": "Microsoft.Network/networkSecurityGroups"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "location": "eastus",
+      "name": "[parameters('publicIPAddresses_pip_3mmt_labs_prod_001_name')]",
+      "properties": {
+        "ddosSettings": {
+          "protectionMode": "VirtualNetworkInherited"
+        },
+        "idleTimeoutInMinutes": 4,
+        "ipAddress": "4.227.250.17",
+        "ipTags": [],
+        "publicIPAddressVersion": "IPv4",
+        "publicIPAllocationMethod": "Static"
+      },
+      "sku": {
+        "name": "Standard",
+        "tier": "Regional"
+      },
+      "tags": {
+        "costcenter": "CC-1001",
+        "department": "IT-Engineering",
+        "environment": "prod",
+        "owner": "samuel.m1804892@st.futminna.edu.ng",
+        "project": "azure-rg-lab"
+      },
+      "type": "Microsoft.Network/publicIPAddresses"
+    },
+    {
+      "apiVersion": "2026-04-01",
+      "kind": "StorageV2",
+      "location": "eastus",
+      "name": "[parameters('storageAccounts_st3mmtlabsprod001_name')]",
+      "properties": {
+        "accessTier": "Hot",
+        "allowBlobPublicAccess": false,
+        "allowCrossTenantReplication": false,
+        "encryption": {
+          "keySource": "Microsoft.Storage",
+          "services": {
+            "blob": {
+              "enabled": true,
+              "keyType": "Account"
+            },
+            "file": {
+              "enabled": true,
+              "keyType": "Account"
+            }
+          }
+        },
+        "minimumTlsVersion": "TLS1_2",
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "defaultAction": "Allow",
+          "ipRules": [],
+          "ipv6Rules": [],
+          "virtualNetworkRules": []
+        },
+        "supportsHttpsTrafficOnly": true
+      },
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "tags": {
+        "costcenter": "CC-1001",
+        "department": "IT-Engineering",
+        "environment": "prod",
+        "owner": "samuel.m1804892@st.futminna.edu.ng",
+        "project": "azure-rg-lab"
+      },
+      "type": "Microsoft.Storage/storageAccounts"
+    },
+    {
+      "apiVersion": "2025-11-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nic_3mmt_labs_prod_001_name'))]"
+      ],
+      "location": "eastus",
+      "name": "[parameters('virtualMachines_vm_3mmt_labs_prod_001_name')]",
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "Standard_B1s"
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nic_3mmt_labs_prod_001_name'))]",
+              "properties": {
+                "primary": true
+              }
+            }
+          ]
+        },
+        "osProfile": {
+          "adminUsername": "3mmtadmin",
+          "allowExtensionOperations": true,
+          "computerName": "[parameters('virtualMachines_vm_3mmt_labs_prod_001_name')]",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": true,
+            "patchSettings": {
+              "assessmentMode": "ImageDefault",
+              "patchMode": "ImageDefault"
+            },
+            "provisionVMAgent": true,
+            "ssh": {
+              "publicKeys": [
+                {
+                  "keyData": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJfKzQ3zGJHLgmMi+ljMiJa7sKl+5NwU+bwRc48RgsWY samuel.m1804892@st.futminna.edu.ng",
+                  "path": "/home/3mmtadmin/.ssh/authorized_keys"
+                }
+              ]
+            }
+          },
+          "requireGuestProvisionSignal": true,
+          "secrets": []
+        },
+        "securityProfile": {
+          "securityType": "Standard"
+        },
+        "storageProfile": {
+          "dataDisks": [],
+          "diskControllerType": "SCSI",
+          "imageReference": {
+            "offer": "0001-com-ubuntu-server-jammy",
+            "publisher": "Canonical",
+            "sku": "22_04-lts-gen2",
+            "version": "latest"
+          },
+          "osDisk": {
+            "caching": "ReadWrite",
+            "createOption": "FromImage",
+            "deleteOption": "Detach",
+            "diskSizeGB": 30,
+            "managedDisk": {
+              "id": "[resourceId('Microsoft.Compute/disks', concat('osdisk-', parameters('virtualMachines_vm_3mmt_labs_prod_001_name')))]",
+              "storageAccountType": "StandardSSD_LRS"
+            },
+            "name": "[concat('osdisk-', parameters('virtualMachines_vm_3mmt_labs_prod_001_name'))]",
+            "osType": "Linux"
+          }
+        }
+      },
+      "tags": {
+        "costcenter": "CC-1001",
+        "department": "IT-Engineering",
+        "environment": "prod",
+        "owner": "samuel.m1804892@st.futminna.edu.ng",
+        "project": "azure-rg-lab"
+      },
+      "type": "Microsoft.Compute/virtualMachines"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nsg_3mmt_labs_prod_001_name'))]"
+      ],
+      "name": "[concat(parameters('networkSecurityGroups_nsg_3mmt_labs_prod_001_name'), '/Allow-SSH-Inbound')]",
+      "properties": {
+        "access": "Allow",
+        "destinationAddressPrefix": "*",
+        "destinationAddressPrefixes": [],
+        "destinationPortRange": "22",
+        "destinationPortRanges": [],
+        "direction": "Inbound",
+        "priority": 100,
+        "protocol": "Tcp",
+        "sourceAddressPrefix": "102.91.133.226",
+        "sourceAddressPrefixes": [],
+        "sourcePortRange": "*",
+        "sourcePortRanges": []
+      },
+      "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nsg_3mmt_labs_prod_001_name'))]"
+      ],
+      "location": "eastus",
+      "name": "[parameters('virtualNetworks_vnet_3mmt_labs_prod_001_name')]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.1.0.0/16"
+          ]
+        },
+        "enableDdosProtection": false,
+        "privateEndpointVNetPolicies": "Disabled",
+        "subnets": [
+          {
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_3mmt_labs_prod_001_name'), 'snet-prod-001')]",
+            "name": "snet-prod-001",
+            "properties": {
+              "addressPrefix": "10.1.1.0/24",
+              "defaultOutboundAccess": false,
+              "delegations": [],
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nsg_3mmt_labs_prod_001_name'))]"
+              },
+              "privateEndpointNetworkPolicies": "Disabled",
+              "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+          }
+        ],
+        "virtualNetworkPeerings": []
+      },
+      "tags": {
+        "costcenter": "CC-1001",
+        "department": "IT-Engineering",
+        "environment": "prod",
+        "owner": "samuel.m1804892@st.futminna.edu.ng",
+        "project": "azure-rg-lab"
+      },
+      "type": "Microsoft.Network/virtualNetworks"
+    },
+    {
+      "apiVersion": "2026-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_st3mmtlabsprod001_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_st3mmtlabsprod001_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        },
+        "deleteRetentionPolicy": {
+          "allowPermanentDelete": false,
+          "enabled": false
+        },
+        "staticWebsite": {
+          "enabled": false
+        }
+      },
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts/blobServices"
+    },
+    {
+      "apiVersion": "2026-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_st3mmtlabsprod001_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_st3mmtlabsprod001_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        },
+        "protocolSettings": {
+          "smb": {}
+        },
+        "shareDeleteRetentionPolicy": {
+          "days": 7,
+          "enabled": true
+        }
+      },
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "type": "Microsoft.Storage/storageAccounts/fileServices"
+    },
+    {
+      "apiVersion": "2026-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_st3mmtlabsprod001_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_st3mmtlabsprod001_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "type": "Microsoft.Storage/storageAccounts/queueServices"
+    },
+    {
+      "apiVersion": "2026-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_st3mmtlabsprod001_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_st3mmtlabsprod001_name'), '/default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "type": "Microsoft.Storage/storageAccounts/tableServices"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_3mmt_labs_prod_001_name'))]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nsg_3mmt_labs_prod_001_name'))]"
+      ],
+      "name": "[concat(parameters('virtualNetworks_vnet_3mmt_labs_prod_001_name'), '/snet-prod-001')]",
+      "properties": {
+        "addressPrefix": "10.1.1.0/24",
+        "defaultOutboundAccess": false,
+        "delegations": [],
+        "networkSecurityGroup": {
+          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nsg_3mmt_labs_prod_001_name'))]"
+        },
+        "privateEndpointNetworkPolicies": "Disabled",
+        "privateLinkServiceNetworkPolicies": "Enabled"
+      },
+      "type": "Microsoft.Network/virtualNetworks/subnets"
+    },
+    {
+      "apiVersion": "2026-04-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_st3mmtlabsprod001_name'), 'default')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_st3mmtlabsprod001_name'))]"
+      ],
+      "name": "[concat(parameters('storageAccounts_st3mmtlabsprod001_name'), '/default/prod-container')]",
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "immutableStorageWithVersioning": {
+          "enabled": false
+        },
+        "publicAccess": "None"
+      },
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+    },
+    {
+      "apiVersion": "2025-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_pip_3mmt_labs_prod_001_name'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_3mmt_labs_prod_001_name'), 'snet-prod-001')]",
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nsg_3mmt_labs_prod_001_name'))]"
+      ],
+      "kind": "Regular",
+      "location": "eastus",
+      "name": "[parameters('networkInterfaces_nic_3mmt_labs_prod_001_name')]",
+      "properties": {
+        "auxiliaryMode": "None",
+        "auxiliarySku": "None",
+        "disableTcpStateTracking": false,
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableIPForwarding": false,
+        "ipConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nic_3mmt_labs_prod_001_name')), '/ipConfigurations/ipconfig1')]",
+            "name": "ipconfig1",
+            "properties": {
+              "primary": true,
+              "privateIPAddress": "10.1.1.4",
+              "privateIPAddressVersion": "IPv4",
+              "privateIPAllocationMethod": "Dynamic",
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_pip_3mmt_labs_prod_001_name'))]"
+              },
+              "subnet": {
+                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_3mmt_labs_prod_001_name'), 'snet-prod-001')]"
+              }
+            }
+          }
+        ],
+        "networkSecurityGroup": {
+          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nsg_3mmt_labs_prod_001_name'))]"
+        },
+        "nicType": "Standard"
+      },
+      "type": "Microsoft.Network/networkInterfaces"
+    }
+  ],
+  "variables": {}
+}

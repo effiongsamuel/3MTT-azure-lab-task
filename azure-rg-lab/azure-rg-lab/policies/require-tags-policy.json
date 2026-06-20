@@ -1,0 +1,65 @@
+{
+  "properties": {
+    "displayName": "Require environment, owner, project, costcenter, and department tags",
+    "description": "Enforces that all resources within scope must have the five required governance tags: environment, owner, project, costcenter, and department. This supports the tagging strategy defined in the Azure Resource Organization lab.",
+    "mode": "Indexed",
+    "parameters": {
+      "tagNames": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Required Tag Names",
+          "description": "List of tag names that must be present on every resource."
+        },
+        "defaultValue": [
+          "environment",
+          "owner",
+          "project",
+          "costcenter",
+          "department"
+        ]
+      },
+      "effect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Deny blocks resource creation; Audit only flags non-compliant resources without blocking."
+        },
+        "allowedValues": [
+          "Deny",
+          "Audit",
+          "Disabled"
+        ],
+        "defaultValue": "Audit"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "anyOf": [
+          {
+            "field": "tags['environment']",
+            "exists": "false"
+          },
+          {
+            "field": "tags['owner']",
+            "exists": "false"
+          },
+          {
+            "field": "tags['project']",
+            "exists": "false"
+          },
+          {
+            "field": "tags['costcenter']",
+            "exists": "false"
+          },
+          {
+            "field": "tags['department']",
+            "exists": "false"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    }
+  }
+}
