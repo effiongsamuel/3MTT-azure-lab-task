@@ -28,12 +28,12 @@ output "storage_account_name" {
   value       = azurerm_storage_account.dev.name
 }
 
-output "sql_server_fqdn" {
-  description = "Fully qualified domain name of the Azure SQL logical server"
-  value       = azurerm_mssql_server.dev.fully_qualified_domain_name
-}
+# output "sql_server_fqdn" {
+#   description = "Fully qualified domain name of the Azure SQL logical server"
+#   value       = azurerm_mssql_server.dev.fully_qualified_domain_name
+# }
 
-output "sql_database_name" {
-  description = "Name of the SQL database"
-  value       = azurerm_mssql_database.dev.name
-}
+# output "sql_database_name" {
+#   description = "Name of the SQL database"
+#   value       = azurerm_mssql_database.dev.name
+# }
